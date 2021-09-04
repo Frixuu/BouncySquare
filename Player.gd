@@ -1,16 +1,33 @@
 extends Node2D
 
+export var friction_x: float = 4000.0
 export var speed_x: float = 400.0
 export var speed_y: float = 300.0
 
+var velocity_x: float = 0.0
 var velocity_y: float = speed_y
 
 func _process(dt: float):
-	var velocity = Vector2(0.0, velocity_y)
-	if Input.is_action_pressed("player_right"):
-		velocity.x += speed_x
-	if Input.is_action_pressed("player_left"):
-		velocity.x -= speed_y
+	
+	# Move only if is currently in Alive state
+	if StateManager.current_state == StateManager.State.PLAYING:
+		var curr_velocity_x: float = 0.0
+		curr_velocity_x += Input.get_action_strength("player_right")
+		curr_velocity_x -= Input.get_action_strength("player_left")
+		curr_velocity_x *= speed_x
+		
+		var max_step: float = friction_x * dt
+		var diff_x: float = curr_velocity_x - velocity_x
+		if abs(diff_x) < max_step:
+			velocity_x = curr_velocity_x
+		else:
+			if diff_x > 0:
+				velocity_x += max_step
+			else:
+				velocity_x -= max_step
+	
+	# Apply calculated velocity
+	var velocity = Vector2(velocity_x, velocity_y)
 	position += velocity * dt
 	
 	# If the player is vertically out of bounds, reverse their vertical velocity
