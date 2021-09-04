@@ -11,6 +11,7 @@ func on_color_change(color: Color, duration: float):
 	if duration == 0.0:
 		self.self_modulate = color
 	else:
+		tween.stop(self)
 		tween.interpolate_property(self, "self_modulate",
 			self.self_modulate, color, duration,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
