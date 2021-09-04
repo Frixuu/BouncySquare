@@ -19,3 +19,9 @@ func _process(delta: float):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		position += velocity * delta
+
+func on_collider_enter(_rid: int, other: Area2D, _other_idx: int, _this_idx: int):
+	if StateManager.current_state == StateManager.State.PLAYING:
+		StateManager.set_state(StateManager.State.DEAD)
+		var other_sprite = other.get_node("Sprite")
+		other_sprite.self_modulate = Color.red

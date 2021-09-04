@@ -8,10 +8,10 @@ func _ready():
 	var _err = BoundaryManager.connect("color_change", self, "on_color_change")
 
 func on_color_change(color: Color, duration: float):
+	tween.stop(self)
 	if duration == 0.0:
 		self.self_modulate = color
 	else:
-		tween.stop(self)
 		tween.interpolate_property(self, "self_modulate",
 			self.self_modulate, color, duration,
 			Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)

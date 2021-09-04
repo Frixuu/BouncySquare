@@ -15,7 +15,9 @@ func on_state_changed(_prev_state, new_state):
 
 func lower_pitch():
 	tween.stop(self)
-	tween.interpolate_property(self, "pitch_scale", 1.0, 0.5, 1)
+	tween.interpolate_property(self, "pitch_scale",
+		1.0, 0.5, 1.4,
+		Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 	tween.start()
 
 func pause():
@@ -24,7 +26,9 @@ func pause():
 func resume():
 	if self.pitch_scale < 1.0:
 		tween.stop(self)
-		tween.interpolate_property(self, "pitch_scale", self.pitch_scale, 1.0, 0.1)
+		tween.interpolate_property(self, "pitch_scale",
+			self.pitch_scale, 1.0, 0.1,
+			Tween.TRANS_CUBIC, Tween.EASE_IN_OUT)
 		tween.start()
 	self.playing = true
 	self.stream_paused = false
