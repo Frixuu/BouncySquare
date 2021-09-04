@@ -9,9 +9,20 @@ __meta__ = {
 "_edit_group_": true
 }
 
-[node name="Sprite" type="Sprite" parent="."]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_left = -16.0
+margin_top = -16.0
+margin_right = 1008.0
+margin_bottom = 1008.0
+rect_scale = Vector2( 0.032, 0.032 )
 texture = ExtResource( 1 )
+patch_margin_left = 256
+patch_margin_top = 256
+patch_margin_right = 256
+patch_margin_bottom = 256
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2( -0.125, 0 )
-polygon = PoolVector2Array( 14.5, 14.5, 12, 16, -12, 16, -14.5, 14.5, -16, 12, -16, -12, -14.5, -14.5, -12, -16, 12, -16, 14.5, -14.5, 16, -12, 16, 12 )
+polygon = PoolVector2Array( 15.1457, 15.3796, 13.5087, 16.3973, 11.7389, 16.766, -11.217, 16.7674, -13.2895, 16.1947, -14.725, 14.9853, -15.6055, 13.5964, -16.0024, 11.9469, -16.0033, -11.1632, -15.6391, -12.7283, -14.6253, -14.3426, -13.2364, -15.4402, -11.1411, -16.0138, 11.8368, -16.0101, 14.0023, -15.4797, 15.6375, -14.1097, 16.4993, -12.4745, 16.7865, -11.1045, 16.754, 11.9398, 16.2666, 13.9491 )

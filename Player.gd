@@ -3,7 +3,7 @@ extends Area2D
 export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
 
-func _process(delta):
+func _process(delta: float):
 	var viewport_rect = get_viewport_rect()
 	viewport_rect.get_area()
 	screen_size = get_viewport_rect().size
