@@ -15,7 +15,7 @@ func on_state_changed(prev_state, _new_state):
 		tween.start()
 
 func destroy():
-	get_parent().remove_child(self)
+	self.queue_free()
 
 func _process(_dt: float):
 	if Input.is_action_pressed("ui_accept"):
