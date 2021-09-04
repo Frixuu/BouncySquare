@@ -1,8 +1,8 @@
 extends Node2D
 
 export var friction_x: float = 4000.0
-export var speed_x: float = 400.0
-export var speed_y: float = 300.0
+export var speed_x: float = 500.0
+export var speed_y: float = 425.0
 
 var velocity_x: float = 0.0
 var velocity_y: float = speed_y
