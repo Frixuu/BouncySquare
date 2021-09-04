@@ -1,4 +1,4 @@
-extends Area2D
+extends Node2D
 
 export var speed = 400  # How fast the player will move (pixels/sec).
 var screen_size  # Size of the game window.
@@ -19,5 +19,3 @@ func _process(delta: float):
 	if velocity.length() > 0:
 		velocity = velocity.normalized() * speed
 		position += velocity * delta
-		position.x = clamp(position.x, 0, screen_size.x)
-		position.y = clamp(position.y, 0, screen_size.y)

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Square.png" type="Texture" id=1]
+
+[node name="Obstacle" type="Area2D"]
+
+[node name="Collider" type="CollisionPolygon2D" parent="."]
+scale = Vector2( 1.5, 1.5 )
+polygon = PoolVector2Array( 15.6888, 15.8196, 14.232, 16.6363, 11.7389, 16.766, -11.217, 16.7674, -13.4524, 16.6324, -14.9748, 15.7137, -15.8935, 14.27, -16.0024, 11.9469, -16.0033, -11.1632, -15.9822, -12.9992, -15.1862, -14.7941, -13.5631, -15.8554, -11.1411, -16.0138, 11.8368, -16.0101, 14.3744, -15.8139, 15.8622, -14.8406, 16.6687, -13.2833, 16.7865, -11.1045, 16.754, 11.9398, 16.6158, 14.3408 )
+
+[node name="9-sliced Sprite" type="NinePatchRect" parent="."]
+margin_left = -23.9213
+margin_top = -24.0
+margin_right = 1512.08
+margin_bottom = 1512.0
+rect_scale = Vector2( 0.032, 0.032 )
+texture = ExtResource( 1 )
+patch_margin_left = 256
+patch_margin_top = 256
+patch_margin_right = 256
+patch_margin_bottom = 256
+__meta__ = {
+"_edit_use_anchors_": false
+}
