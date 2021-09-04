@@ -7,6 +7,9 @@ export var speed_y: float = 425.0
 var velocity_x: float = 0.0
 var velocity_y: float = speed_y
 
+signal went_too_high
+signal went_too_low
+
 func _process(dt: float):
 	
 	# Move only if is currently in Alive state
@@ -32,6 +35,7 @@ func _process(dt: float):
 	
 	# If the player is vertically out of bounds, reverse their vertical velocity
 	if position.y > Arena.y_max:
+		emit_signal("went_too_low")
 		var difference = position.y - Arena.y_max
 		if difference > Arena.height:
 			position.y = Arena.y_max
@@ -40,6 +44,7 @@ func _process(dt: float):
 		if velocity_y > 0:
 			velocity_y *= -1.0
 	elif position.y < Arena.y_min:
+		emit_signal("went_too_high")
 		var difference = Arena.y_min - position.y
 		if difference > Arena.height:
 			position.y = Arena.y_min

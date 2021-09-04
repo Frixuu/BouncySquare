@@ -6,7 +6,6 @@ func _ready():
 func on_state_changed(prev_state, _new_state):
 	if prev_state == StateManager.State.MAIN_MENU:
 		StateManager.disconnect("state_changed", self, "on_state_changed")
-		BoundaryManager.change_color_smoothly(Color.white, 0.5)
 		var tween = $Tween
 		tween.interpolate_property(self, "modulate",
 			Color.white, Color.transparent, 0.2,

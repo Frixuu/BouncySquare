@@ -21,7 +21,7 @@ smoothing_enabled = true
 
 [node name="Upper" type="Sprite" parent="Bounds"]
 material = ExtResource( 4 )
-position = Vector2( 0.707092, -120 )
+position = Vector2( 0, -122.5 )
 scale = Vector2( 720, 5 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
@@ -30,7 +30,7 @@ script = ExtResource( 5 )
 
 [node name="Lower" type="Sprite" parent="Bounds"]
 material = ExtResource( 4 )
-position = Vector2( -0.707153, 120.707 )
+position = Vector2( 0, 122.5 )
 scale = Vector2( 720, 5 )
 texture = ExtResource( 8 )
 script = ExtResource( 5 )
@@ -57,3 +57,6 @@ margin_right = 320.0
 margin_bottom = 162.5
 
 [node name="Audio" parent="." instance=ExtResource( 6 )]
+
+[connection signal="went_too_high" from="Player" to="Bounds/Upper" method="tick_color_preserve_alpha" binds= [ Color( 0.588235, 0.588235, 0.588235, 1 ), 0.1 ]]
+[connection signal="went_too_low" from="Player" to="Bounds/Lower" method="tick_color_preserve_alpha" binds= [ Color( 0.588235, 0.588235, 0.588235, 1 ), 0.1 ]]
