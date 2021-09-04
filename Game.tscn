@@ -24,4 +24,15 @@ position = Vector2( -0.707153, 120.707 )
 scale = Vector2( 720, 5 )
 texture = ExtResource( 3 )
 
-[node name="Main Menu" parent="." instance=ExtResource( 2 )]
+[node name="UI" type="Control" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Main Menu" parent="UI" instance=ExtResource( 2 )]
+margin_left = -360.0
+margin_top = -202.5
+margin_right = 320.0
+margin_bottom = 162.5
