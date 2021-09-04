@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://GUI/Fonts/Permanent Marker - Small.tres" type="DynamicFont" id=1]
 [ext_resource path="res://GUI/Fonts/Permanent Marker - Big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://GUI/Fonts/Permanent Marker - Tiny.tres" type="DynamicFont" id=3]
+[ext_resource path="res://MainMenu.gd" type="Script" id=4]
 
 [node name="Main Menu" type="MarginContainer"]
 anchor_right = 1.0
@@ -11,6 +12,7 @@ custom_constants/margin_right = 60
 custom_constants/margin_top = 40
 custom_constants/margin_left = 60
 custom_constants/margin_bottom = 40
+script = ExtResource( 4 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -28,52 +30,50 @@ margin_bottom = 70.0
 custom_fonts/font = ExtResource( 2 )
 text = "Bouncy Square"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBox"]
+[node name="VBox" type="VBoxContainer" parent="VBox"]
 margin_top = 74.0
 margin_right = 600.0
-margin_bottom = 264.0
+margin_bottom = 297.0
 size_flags_vertical = 3
-alignment = 1
+alignment = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Desc" type="Label" parent="VBox/VBoxContainer"]
-margin_top = 75.0
+[node name="Desc" type="Label" parent="VBox/VBox"]
+margin_top = 172.0
 margin_right = 600.0
-margin_bottom = 114.0
+margin_bottom = 223.0
 custom_fonts/font = ExtResource( 1 )
-text = "Move with left&right arrow keys.
-Press SPACE to start"
+text = "Press ENTER/SPACE to start.
+"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Credits" type="HBoxContainer" parent="VBox"]
-margin_top = 268.0
+[node name="Credits" type="VBoxContainer" parent="VBox"]
+margin_top = 301.0
 margin_right = 600.0
 margin_bottom = 325.0
 custom_constants/separation = 0
 
 [node name="Music" type="Label" parent="VBox/Credits"]
-margin_right = 300.0
-margin_bottom = 57.0
+margin_right = 600.0
+margin_bottom = 12.0
 rect_min_size = Vector2( 300, 0 )
 size_flags_vertical = 5
 custom_fonts/font = ExtResource( 3 )
-text = "Music: 8bit Dungeon Boss by Kevin MacLeod
-Link: https://incompetech.filmmusic.io/song/3330-8bit-dungeon-boss
-License: https://filmmusic.io/standard-license
-"
+text = "Music: 8bit Dungeon Boss by Kevin MacLeod. License: https://filmmusic.io/standard-license"
 autowrap = true
 
 [node name="Font" type="Label" parent="VBox/Credits"]
-margin_left = 300.0
-margin_right = 550.0
-margin_bottom = 57.0
+margin_top = 12.0
+margin_right = 600.0
+margin_bottom = 24.0
 rect_min_size = Vector2( 250, 0 )
 size_flags_vertical = 5
 custom_fonts/font = ExtResource( 3 )
-text = "Font: Permanent Marker by Font Diner
-License: https://www.apache.org/licenses/LICENSE-2.0"
+text = "Font: Permanent Marker by Font Diner. License: https://www.apache.org/licenses/LICENSE-2.0"
 autowrap = true
+
+[node name="Tween" type="Tween" parent="."]

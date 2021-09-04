@@ -27,6 +27,9 @@ config/icon="res://Square.png"
 
 [autoload]
 
+Arena="*res://Arena.gd"
+BoundaryManager="*res://BoundaryManager.gd"
+StateManager="*res://StateManager.gd"
 ViewportAdjuster="*res://ViewportAdjuster.gd"
 
 [display]

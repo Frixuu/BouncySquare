@@ -1,12 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/MainMenu.tscn" type="PackedScene" id=2]
 [ext_resource path="res://White.png" type="Texture" id=3]
+[ext_resource path="res://GUI/InterfaceUnlitMaterial.tres" type="Material" id=4]
+[ext_resource path="res://Boundary.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -15,14 +18,22 @@ smoothing_enabled = true
 [node name="Bounds" type="Node2D" parent="."]
 
 [node name="Upper" type="Sprite" parent="Bounds"]
+material = ExtResource( 4 )
 position = Vector2( 0.707092, -120 )
 scale = Vector2( 720, 5 )
 texture = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="Bounds/Upper"]
 
 [node name="Lower" type="Sprite" parent="Bounds"]
+material = ExtResource( 4 )
 position = Vector2( -0.707153, 120.707 )
 scale = Vector2( 720, 5 )
 texture = ExtResource( 3 )
+script = ExtResource( 5 )
+
+[node name="Tween" type="Tween" parent="Bounds/Lower"]
 
 [node name="UI" type="Control" parent="."]
 margin_right = 40.0

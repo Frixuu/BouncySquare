@@ -4,7 +4,7 @@ onready var viewport: Viewport = get_viewport()
 export var target_width: int = 720
 
 func _ready():
-	viewport.connect("size_changed", self, "adjust_size")
+	var _err = viewport.connect("size_changed", self, "adjust_size")
 	adjust_size()
 
 func adjust_size():
