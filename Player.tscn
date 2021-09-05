@@ -79,6 +79,6 @@ __meta__ = {
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="area_shape_entered" from="Middle" to="." method="on_collider_enter"]
-[connection signal="area_shape_entered" from="Right" to="." method="on_collider_enter"]
-[connection signal="area_shape_entered" from="Left" to="." method="on_collider_enter"]
+[connection signal="area_shape_entered" from="Middle" to="." method="on_collider_enter" binds= [ "Middle" ]]
+[connection signal="area_shape_entered" from="Right" to="." method="on_collider_enter" binds= [ "Right" ]]
+[connection signal="area_shape_entered" from="Left" to="." method="on_collider_enter" binds= [ "Left" ]]

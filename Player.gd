@@ -68,9 +68,11 @@ func _process(dt: float):
 		StateManager.set_state(StateManager.State.DEAD)
 	
 
-func on_collider_enter(_rid: int, other: Area2D, _other_idx: int, _this_idx: int):
+func on_collider_enter(_rid: int, other: Area2D, _other_idx: int, _this_idx: int, trigger_name: String):
 	
-	if abs(other.position.x) > 376.0:
+	var trigger = get_node(trigger_name) as Area2D
+	var pos_x = trigger.position.x + position.x
+	if abs(pos_x) > (360.0 + 16.0) || abs(other.position.x) > (360.0 + 24.0 - 10.0):
 		return
 		
 	if StateManager.current_state == StateManager.State.PLAYING:
