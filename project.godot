@@ -35,6 +35,7 @@ config/icon="res://Square.png"
 
 Arena="*res://Arena.gd"
 AutoRespawner="*res://AutoRespawner.gd"
+Collections="*res://Utilities/Scripts/Collections.gd"
 ScoreManager="*res://ScoreManager.gd"
 StateManager="*res://StateManager.gd"
 ViewportAdjuster="*res://ViewportAdjuster.gd"
