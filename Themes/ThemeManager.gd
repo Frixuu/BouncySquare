@@ -8,7 +8,8 @@ signal theme_changed(new_theme, next_theme)
 
 func _ready():
 	StateManager.connect("respawned", self, "choose_next_theme")
-	current_theme = available_themes[0]
+	var index = randi() % available_themes.size()
+	current_theme = available_themes[index]
 	next_theme = current_theme
 	emit_signal("theme_changed", current_theme, next_theme)
 
