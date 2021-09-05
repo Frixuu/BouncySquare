@@ -6,3 +6,4 @@
 [resource]
 script = ExtResource( 2 )
 background_image = ExtResource( 1 )
+boundary_color = Color( 0.65098, 0.498039, 0.788235, 1 )
