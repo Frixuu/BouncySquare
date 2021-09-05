@@ -1,14 +1,6 @@
 extends Sprite
 
-export var starting_color: Color = Color.transparent
 onready var tween: Tween = $Tween as Tween
-
-func _ready():
-	self.self_modulate = starting_color
-	var _err = StateManager.connect("respawned", self, "on_respawn")
-
-func on_respawn():
-	move_to_color(Color.white, 0.5)
 
 func tick_color_preserve_alpha(color: Color, duration: float):
 	tween.stop(self)

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasItem
 
 onready var tween: Tween = $Tween as Tween
 
