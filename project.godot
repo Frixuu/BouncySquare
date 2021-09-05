@@ -31,6 +31,10 @@ config/description="A quick arcade game made to learn the Godot engine."
 run/main_scene="res://Game.tscn"
 config/icon="res://Square.png"
 
+[audio]
+
+default_bus_layout="res://Audio/Bus Layout.tres"
+
 [autoload]
 
 Arena="*res://Arena.gd"
