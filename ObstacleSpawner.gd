@@ -3,6 +3,8 @@ extends CanvasItem
 const Obstacle = preload("res://Obstacle.gd")
 const ObstacleSpawnData = preload("res://ObstacleSpawnData.gd")
 const ObstaclePrefab = preload("res://Obstacle.tscn")
+const Indicator = preload("res://Indicator.gd")
+const IndicatorPrefab = preload("res://Obstacle Indicator.tscn")
 
 var active: bool = false
 var spawn_queue: Array = []
@@ -37,6 +39,12 @@ func _process(dt: float):
 		self.add_child(obstacle)
 		obstacle.position = spawn_data.initial_position
 		(obstacle as Obstacle).speed = spawn_data.speed
+		var indicator = IndicatorPrefab.instance()
+		var dir = sign(obstacle.position.x)
+		indicator.position = Vector2(340.0 * dir, obstacle.position.y)
+		(indicator as Node2D).scale.x *= dir
+		(indicator as Indicator).set_obstacle(obstacle)
+		self.add_child(indicator)
 		
 	if spawn_queue.empty():
 		if pattern_countdown <= 0 && randi() % 4 == 0:
@@ -53,7 +61,7 @@ func queue_single_random():
 	var spawn_data = ObstacleSpawnData.new()
 	spawn_data.timer = compute_suggested_timer()
 	spawn_data.speed = Vector2(random([300.0, -300.0]), 0.0)
-	spawn_data.initial_position = Vector2(spawn_data.speed.x * -2.0, random([96.0, 48.0, 0.0, -48.0, -96.0]))
+	spawn_data.initial_position = Vector2(spawn_data.speed.x * -2.5, random([96.0, 48.0, 0.0, -48.0, -96.0]))
 	spawn_queue.push_back(spawn_data)
 	
 func queue_pattern():
@@ -66,7 +74,7 @@ func queue_pattern():
 			spawn_data = ObstacleSpawnData.new()
 			spawn_data.timer = compute_suggested_timer()
 			spawn_data.speed = Vector2(random([300.0, -300.0]), 0.0)
-			spawn_data.initial_position = Vector2(spawn_data.speed.x * -2.0, pos_y)
+			spawn_data.initial_position = Vector2(spawn_data.speed.x * -2.5, pos_y)
 			spawn_queue.push_back(spawn_data)
 			
 			spawn_data = copy_data(spawn_data)

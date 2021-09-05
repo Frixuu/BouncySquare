@@ -146,10 +146,10 @@ smoothing_enabled = true
 
 [node name="Audio" parent="." instance=ExtResource( 6 )]
 
-[connection signal="theme_changed" from="Theme Manager" to="Backdrop/Envelope/Background" method="on_theme_changed"]
 [connection signal="theme_changed" from="Theme Manager" to="Fake Backdrop/Envelope/Background" method="on_theme_changed"]
-[connection signal="theme_changed" from="Theme Manager" to="Obstacles" method="on_theme_changed"]
-[connection signal="theme_changed" from="Theme Manager" to="Fake Backdrop/Bounds" method="on_theme_changed"]
+[connection signal="theme_changed" from="Theme Manager" to="Backdrop/Envelope/Background" method="on_theme_changed"]
 [connection signal="theme_changed" from="Theme Manager" to="Backdrop/Bounds Presenter/Bounds" method="on_theme_changed"]
+[connection signal="theme_changed" from="Theme Manager" to="Fake Backdrop/Bounds" method="on_theme_changed"]
+[connection signal="theme_changed" from="Theme Manager" to="Obstacles" method="on_theme_changed"]
 [connection signal="went_too_high" from="Player" to="Backdrop/Bounds Presenter/Bounds/Upper" method="tick_color_preserve_alpha" binds= [ Color( 0.588235, 0.588235, 0.588235, 1 ), 0.1 ]]
 [connection signal="went_too_low" from="Player" to="Backdrop/Bounds Presenter/Bounds/Lower" method="tick_color_preserve_alpha" binds= [ Color( 0.588235, 0.588235, 0.588235, 1 ), 0.1 ]]
