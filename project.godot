@@ -34,6 +34,7 @@ config/icon="res://Square.png"
 [autoload]
 
 Arena="*res://Arena.gd"
+AutoRespawner="*res://AutoRespawner.gd"
 ScoreManager="*res://ScoreManager.gd"
 StateManager="*res://StateManager.gd"
 ViewportAdjuster="*res://ViewportAdjuster.gd"
