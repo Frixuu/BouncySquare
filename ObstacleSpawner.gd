@@ -1,10 +1,10 @@
 extends CanvasItem
 
-const Obstacle = preload("res://Obstacle.gd")
+const Obstacle = preload("res://Actors/Obstacle/Obstacle.gd")
 const ObstacleSpawnData = preload("res://ObstacleSpawnData.gd")
-const ObstaclePrefab = preload("res://Obstacle.tscn")
-const Indicator = preload("res://Indicator.gd")
-const IndicatorPrefab = preload("res://Obstacle Indicator.tscn")
+const ObstaclePrefab = preload("res://Actors/Obstacle/Obstacle.tscn")
+const Indicator = preload("res://Actors/Indicator/Indicator.gd")
+const IndicatorPrefab = preload("res://Actors/Indicator/Indicator.tscn")
 
 ## Determines whether the spawner is currently working.
 var active: bool = false

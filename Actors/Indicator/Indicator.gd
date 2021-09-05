@@ -10,7 +10,7 @@ func on_player_respawned():
 
 func set_obstacle(o: Node2D):
 	obstacle = o
-	
+
 func _process(dt: float):
 	if obstacle != null:
 		if abs(obstacle.position.x) < 360.0:
