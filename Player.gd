@@ -1,5 +1,7 @@
 extends Node2D
 
+onready var tween: Tween = $Tween as Tween
+
 export var friction_x: float = 4000.0
 export var speed_x: float = 500.0
 export var speed_y: float = 425.0
@@ -67,7 +69,13 @@ func _process(dt: float):
 	
 
 func on_collider_enter(_rid: int, other: Area2D, _other_idx: int, _this_idx: int):
+	
+	if abs(other.position.x) > 376.0:
+		return
+		
 	if StateManager.current_state == StateManager.State.PLAYING:
 		StateManager.set_state(StateManager.State.DEAD)
+		other.set_deferred("monitorable", false)
 		var other_sprite = other.get_node("Sprite")
-		other_sprite.self_modulate = Color.red
+		tween.interpolate_property(other_sprite, "self_modulate", other_sprite.self_modulate, Color.red, 1.0)
+		tween.start()
