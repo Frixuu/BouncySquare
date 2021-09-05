@@ -47,8 +47,8 @@ __meta__ = {
 [node name="HUD" parent="UI" instance=ExtResource( 7 )]
 margin_left = -360.0
 margin_top = -202.5
-margin_right = 360.0
-margin_bottom = 202.5
+margin_right = 320.0
+margin_bottom = 162.5
 
 [node name="Main Menu" parent="UI" instance=ExtResource( 2 )]
 margin_left = -360.0
