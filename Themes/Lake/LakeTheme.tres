@@ -7,4 +7,4 @@
 script = ExtResource( 1 )
 background_image = ExtResource( 2 )
 boundary_color = Color( 0.611765, 0.635294, 0.666667, 1 )
-obstacle_color = Color( 0.804611, 0.823059, 0.847656, 1 )
+obstacle_color = Color( 0.752941, 0.85098, 0.878431, 1 )

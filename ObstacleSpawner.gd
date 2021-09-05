@@ -1,4 +1,4 @@
-extends Node
+extends CanvasItem
 
 const Obstacle = preload("res://Obstacle.gd")
 const ObstacleSpawnData = preload("res://ObstacleSpawnData.gd")
@@ -6,7 +6,6 @@ const ObstaclePrefab = preload("res://Obstacle.tscn")
 
 var active: bool = false
 var spawn_queue: Array = []
-var spawn_color: Color
 
 func _ready():
 	StateManager.connect("died", self, "on_player_died")
@@ -19,7 +18,7 @@ func on_player_respawned():
 	active = true
 	
 func on_theme_changed(curr_theme, _next_theme):
-	spawn_color = (curr_theme as GameTheme).obstacle_color
+	self.modulate = (curr_theme as GameTheme).obstacle_color
 
 func _process(dt: float):
 	
@@ -36,7 +35,6 @@ func _process(dt: float):
 		self.add_child(obstacle)
 		obstacle.position = spawn_data.initial_position
 		(obstacle as Obstacle).speed = spawn_data.speed
-		obstacle.get_node("Sprite").self_modulate = spawn_color
 		
 	if spawn_queue.empty():
 		var spawn_data = ObstacleSpawnData.new()
