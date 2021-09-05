@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GUI/MainMenu.tscn" type="PackedScene" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://Themes/ColorSetterCurrent.gd" type="Script" id=18]
 [ext_resource path="res://Themes/ColorSetterNext.gd" type="Script" id=19]
 [ext_resource path="res://ObstacleSpawner.gd" type="Script" id=20]
+[ext_resource path="res://Themes/Canyon/CanyonTheme.tres" type="Resource" id=21]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 light_mode = 1
@@ -31,7 +32,7 @@ blend_mode = 1
 
 [node name="Theme Manager" type="Node" parent="."]
 script = ExtResource( 4 )
-available_themes = [ ExtResource( 12 ), ExtResource( 11 ) ]
+available_themes = [ ExtResource( 21 ), ExtResource( 12 ), ExtResource( 11 ) ]
 
 [node name="Backdrop" type="Node2D" parent="."]
 
@@ -40,7 +41,6 @@ scale = Vector2( 4, 4 )
 script = ExtResource( 17 )
 
 [node name="Background" type="Sprite" parent="Backdrop/Envelope"]
-position = Vector2( -0.377539, 0 )
 texture = ExtResource( 3 )
 script = ExtResource( 13 )
 
@@ -146,8 +146,8 @@ smoothing_enabled = true
 
 [node name="Audio" parent="." instance=ExtResource( 6 )]
 
-[connection signal="theme_changed" from="Theme Manager" to="Fake Backdrop/Envelope/Background" method="on_theme_changed"]
 [connection signal="theme_changed" from="Theme Manager" to="Backdrop/Envelope/Background" method="on_theme_changed"]
+[connection signal="theme_changed" from="Theme Manager" to="Fake Backdrop/Envelope/Background" method="on_theme_changed"]
 [connection signal="theme_changed" from="Theme Manager" to="Backdrop/Bounds Presenter/Bounds" method="on_theme_changed"]
 [connection signal="theme_changed" from="Theme Manager" to="Fake Backdrop/Bounds" method="on_theme_changed"]
 [connection signal="theme_changed" from="Theme Manager" to="Obstacles" method="on_theme_changed"]
