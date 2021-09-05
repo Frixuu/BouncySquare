@@ -10,7 +10,7 @@
 [ext_resource path="res://White.png" type="Texture" id=8]
 [ext_resource path="res://Circle.png" type="Texture" id=9]
 [ext_resource path="res://GUI/MaskableMaterial.tres" type="Material" id=10]
-[ext_resource path="res://Themes/Industrial/IndustrialTheme.tres" type="Resource" id=12]
+[ext_resource path="res://Themes/Forest/ForestTheme.tres" type="Resource" id=11]
 [ext_resource path="res://Themes/ImageSetterCurrent.gd" type="Script" id=13]
 [ext_resource path="res://Themes/ImageSetterNext.gd" type="Script" id=14]
 [ext_resource path="res://GUI/FadeInOnFirstRespawn.gd" type="Script" id=15]
@@ -31,7 +31,7 @@ blend_mode = 1
 
 [node name="Theme Manager" type="Node" parent="."]
 script = ExtResource( 4 )
-available_themes = [ ExtResource( 21 ), ExtResource( 12 ), ExtResource( 3 ) ]
+available_themes = [ ExtResource( 21 ), ExtResource( 11 ), ExtResource( 3 ) ]
 
 [node name="Backdrop" type="Node2D" parent="."]
 

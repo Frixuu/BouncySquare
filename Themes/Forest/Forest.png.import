@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/Industrial.png-8238bce7645676144a514a0b8f1e4809.stex"
+path="res://.import/Forest.png-9883165d0b09ca9a46c38e28a599fdd7.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Themes/Industrial/Industrial.png"
-dest_files=[ "res://.import/Industrial.png-8238bce7645676144a514a0b8f1e4809.stex" ]
+source_file="res://Themes/Forest/Forest.png"
+dest_files=[ "res://.import/Forest.png-9883165d0b09ca9a46c38e28a599fdd7.stex" ]
 
 [params]
 
