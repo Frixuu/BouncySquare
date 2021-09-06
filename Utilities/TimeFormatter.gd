@@ -1,3 +1,4 @@
+## Represents seconds as a string.
 func format(seconds: float) -> String:
 	var text = ""
 	if seconds > 60.0:
