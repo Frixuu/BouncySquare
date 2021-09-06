@@ -39,7 +39,7 @@ default_bus_layout="res://Audio/Bus Layout.tres"
 
 Arena="*res://Arena.gd"
 AutoRespawner="*res://AutoRespawner.gd"
-Collections="*res://Utilities/Scripts/Collections.gd"
+Collections="*res://Utilities/Collections.gd"
 ScoreManager="*res://ScoreManager.gd"
 StateManager="*res://StateManager.gd"
 ViewportAdjuster="*res://ViewportAdjuster.gd"
