@@ -2,8 +2,13 @@ extends Node2D
 
 onready var tween: Tween = $Tween as Tween
 
+## How easy it is for the player to change horizontal velocity?
 export var friction_x: float = 4000.0
+
+## How fast can the player move horizontally?
 export var speed_x: float = 500.0
+
+## How fast does the player bounce vertically?
 export var speed_y: float = 425.0
 
 var velocity_x: float = 0.0
@@ -15,48 +20,46 @@ signal went_too_low
 func _process(dt: float):
 
 	var state = StateManager.current_state
-	if state != StateManager.State.MAIN_MENU && state != StateManager.State.PLAYING:
+	if state == StateManager.State.PAUSED || state == StateManager.State.DEAD:
 		return
 
 	if state == StateManager.State.PLAYING:
-		var curr_velocity_x: float = 0.0
-		curr_velocity_x += Input.get_action_strength("player_right")
-		curr_velocity_x -= Input.get_action_strength("player_left")
-		curr_velocity_x *= speed_x
 
+		# Calculate a target velocity by reading the player inputs
+		var target_velocity_x: float = 0.0
+		target_velocity_x += Input.get_action_strength("player_right")
+		target_velocity_x -= Input.get_action_strength("player_left")
+		target_velocity_x *= speed_x
+
+		# Move the actual velocity towards the target
 		var max_step: float = friction_x * dt
-		var diff_x: float = curr_velocity_x - velocity_x
+		var diff_x: float = target_velocity_x - velocity_x
 		if abs(diff_x) < max_step:
-			velocity_x = curr_velocity_x
+			velocity_x = target_velocity_x
 		else:
-			if diff_x > 0:
-				velocity_x += max_step
-			else:
-				velocity_x -= max_step
+			velocity_x += max_step * sign(diff_x)
 
 	# Apply calculated velocity
-	var velocity = Vector2(velocity_x, velocity_y)
-	position += velocity * dt
+	position += Vector2(velocity_x, velocity_y) * dt
 
-	# If the player is vertically out of bounds, reverse their vertical velocity
+	# If the player is vertically out of bounds,
+	# reverse their vertical velocity
 	if position.y > Arena.y_max:
 		emit_signal("went_too_low")
+		velocity_y *= sign(velocity_y) * -1.0
 		var difference = position.y - Arena.y_max
-		if difference > Arena.height:
+		if abs(difference) > Arena.height:
 			position.y = Arena.y_max
 		else:
 			position.y -= difference
-		if velocity_y > 0:
-			velocity_y *= -1.0
 	elif position.y < Arena.y_min:
 		emit_signal("went_too_high")
+		velocity_y *= sign(velocity_y)
 		var difference = Arena.y_min - position.y
-		if difference > Arena.height:
+		if abs(difference) > Arena.height:
 			position.y = Arena.y_min
 		else:
 			position.y += difference
-		if velocity_y < 0:
-			velocity_y *= -1.0
 
 	# If the player is horizontally out of bounds, just wrap them
 	if position.x > Arena.x_max:
@@ -64,20 +67,24 @@ func _process(dt: float):
 	elif position.x < Arena.x_min:
 		position.x += Arena.width
 
-	if Input.is_action_just_pressed("ui_page_down"):
-		StateManager.set_state(StateManager.State.DEAD)
 
+func on_collider_enter(_rid: int, other: Area2D,
+					   _other_idx: int, _this_idx: int,
+					   trigger_name: String):
 
-func on_collider_enter(_rid: int, other: Area2D, _other_idx: int, _this_idx: int, trigger_name: String):
-
+	# The left and right player clones also are colliders
+	# in order for the player to watch out for the screen edges.
+	# However, we do not want to kill the player
+	# when the collision happens *outside* the screen.
 	var trigger = get_node(trigger_name) as Area2D
 	var pos_x = trigger.position.x + position.x
 	if abs(pos_x) > (360.0 + 16.0) || abs(other.position.x) > (360.0 + 24.0 - 10.0):
 		return
 
+	# The collision was visible on the screen.
+	# If the player is alive, kill them
 	if StateManager.current_state == StateManager.State.PLAYING:
 		StateManager.set_state(StateManager.State.DEAD)
 		other.set_deferred("monitorable", false)
-		var other_sprite = other.get_node("Sprite")
-		tween.interpolate_property(other_sprite, "self_modulate", other_sprite.self_modulate, Color.red, 1.0)
+		tween.interpolate_property(other, "modulate", other.modulate, Color.red, 1.0)
 		tween.start()
