@@ -11,12 +11,12 @@ signal half_second_left
 func _ready():
 	StateManager.connect("died", self, "on_player_died")
 	StateManager.connect("respawned", self, "on_player_respawned")
-	
+
 func on_player_died():
 	dead = true
 	emitted = false
 	timer = time_to_respawn
-	
+
 func on_player_respawned():
 	dead = false
 

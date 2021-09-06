@@ -9,15 +9,12 @@ signal respawned
 signal paused
 signal unpaused
 
-func _ready():
-	pass # Replace with function body.
-
 func set_state(new_state: int):
 	if current_state != new_state:
 		var prev_state = current_state
 		current_state = new_state
 		emit_signal("state_changed", prev_state, new_state)
-		
+
 		match prev_state:
 			State.MAIN_MENU:
 				match new_state:
@@ -37,9 +34,6 @@ func set_state(new_state: int):
 				match new_state:
 					State.PLAYING:
 						return emit_signal("respawned")
-						
-		print_debug("Invalid state change happened: %d -> %d" % [prev_state, new_state])
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float):
-#	pass
+		print_debug("Invalid state change happened: %d -> %d"
+			% [prev_state, new_state])
