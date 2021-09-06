@@ -1,3 +1,5 @@
+extends Node
+
 ## Represents seconds as a string.
 func format(seconds: float) -> String:
 	var text = ""

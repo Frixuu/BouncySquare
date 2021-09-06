@@ -42,6 +42,7 @@ AutoRespawner="*res://Lifecycle/AutoRespawner.gd"
 Collections="*res://Utilities/Collections.gd"
 ScoreManager="*res://ScoreManager.gd"
 StateManager="*res://Lifecycle/StateManager.gd"
+TimeFormatter="*res://Utilities/TimeFormatter.gd"
 ViewportAdjuster="*res://GUI/ViewportAdjuster.gd"
 
 [display]
