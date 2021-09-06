@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://GUI/Fonts/Permanent Marker - Small.tres" type="DynamicFont" id=1]
-[ext_resource path="res://GUI/Fonts/Permanent Marker - Big.tres" type="DynamicFont" id=2]
-[ext_resource path="res://GUI/Fonts/Permanent Marker - Tiny.tres" type="DynamicFont" id=3]
-[ext_resource path="res://MainMenu.gd" type="Script" id=4]
+[ext_resource path="res://GUI/Fonts/Permanent Marker/Permanent Marker - Small.tres" type="DynamicFont" id=1]
+[ext_resource path="res://GUI/Fonts/Permanent Marker/Permanent Marker - Big.tres" type="DynamicFont" id=2]
+[ext_resource path="res://GUI/Fonts/Permanent Marker/Permanent Marker - Tiny.tres" type="DynamicFont" id=3]
+[ext_resource path="res://GUI/MainMenu.gd" type="Script" id=4]
 
 [node name="Main Menu" type="MarginContainer"]
 anchor_right = 1.0
